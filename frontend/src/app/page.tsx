@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import CarCard from "@/components/CarCard";
 
-const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface Car {
   brand: string;
@@ -15,8 +14,9 @@ interface Car {
 
 async function getCars(): Promise<Car[]> {
   try {
-    const res = await fetch(`${API_URL}/api/cars`, {
-      next: { revalidate: 3600 },
+    const url = process.env.API_URL || "http://localhost:8000";
+    const res = await fetch(`${url}/api/cars`, {
+      cache: "no-store",
     });
     if (!res.ok) return [];
     return res.json();
