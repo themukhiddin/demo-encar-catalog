@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import CarCard from "@/components/CarCard";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface Car {
   brand: string;
